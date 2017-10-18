@@ -5,9 +5,14 @@ app.controller('multiselectdropdown', ['$scope', '$http', function ($scope, $htt
     $scope.Categories = [];
     $scope.dropdownSetting = {
         scrollable: true,
+		enableSearch: true,	
         scrollableHeight : '200px',
-		displayProp: 'label'
-    }
+		closeOnBlur: false,
+		showCheckAll: false,
+		checkBoxes: false,
+		displayProp: 'label', // se colocar id funciona 
+		smartButtonMaxItems: 5
+	  }
     //fetch data from database for show in multiselect dropdown
     /*$http.get('/home/getcategories').then(function (data) {
         angular.forEach(data.data, function (value, index) {
@@ -15,8 +20,10 @@ app.controller('multiselectdropdown', ['$scope', '$http', function ($scope, $htt
         });
     })*/
 	
-	// $scope.Categories = [{id: 1, label: "David"}, {id: 2, label: "Jhon"}, {id: 3, label: "Danny"}];
-	$scope.Categories.push({id: 1, label: "David"}, {id: 2, label: "Jhon"}, {id: 3, label: "Danny"});
+	 $scope.Categories = [{id: 1, label: "David"}, {id: 2, label: "Jhon"}, {id: 3, label: "Danny"}];
+	 $scope.CategoriesSelected2 = [$scope.Categories[0], $scope.Categories[1]];
+	 
+	//$scope.Categories.push({id: 1, label: "David"}, {id: 2, label: "Jhon"}, {id: 3, label: "Danny"});
     //post or submit selected items from multiselect dropdown to server
     $scope.SubmittedCategories = [];
     
@@ -46,3 +53,5 @@ app.controller('multiselectdropdown', ['$scope', '$http', function ($scope, $htt
         })*/
     }
 }])
+
+
